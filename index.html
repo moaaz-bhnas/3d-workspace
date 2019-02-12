@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3d Animated Workspace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="workspace" aria-hidden="true">
+    <div class="scene">
+      <div class="desk">
+        <div class="face front"></div>
+        <div class="face back"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+        <div class="face right"></div>
+        <div class="face left"></div>
+      </div>
+      <div class="laptop">
+        <div class="screen">
+          <div class="screen-face screen-front">
+            <div class="viewport"></div>
+          </div>
+          <div class="screen-face screen-back"></div>
+          <div class="screen-face screen-top"></div>
+          <div class="screen-face screen-bottom"></div>
+          <div class="screen-face screen-right"></div>
+          <div class="screen-face screen-left"></div>
+        </div>
+        <div class="keyboard">
+          <div class="keyboard-face keyboard-front">
+            <div class="power-button"></div>
+            <div class="buttons-grid">
+              <div class="row">
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+              </div>
+              <div class="row">
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+              </div>
+              <div class="row">
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button enter"></div>
+              </div>
+              <div class="row">
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+              </div>
+              <div class="row">
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button space"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+                <div class="button"></div>
+              </div>
+            </div>
+          </div>
+          <div class="keyboard-face keyboard-back"></div>
+          <div class="keyboard-face keyboard-top"></div>
+          <div class="keyboard-face keyboard-bottom"></div>
+          <div class="keyboard-face keyboard-right"></div>
+          <div class="keyboard-face keyboard-left"></div>
+        </div>
+      </div>
+      <div class="nail"></div>
+      <div class="portrait">
+        <div class="thread"></div>
+        <div class="thread"></div>
+        <div class="portrait-face portrait-front">
+          <img class="photo" src="images/meowth.svg">
+        </div>
+        <div class="portrait-face portrait-back"></div>
+        <div class="portrait-face portrait-top"></div>
+        <div class="portrait-face portrait-bottom"></div>
+        <div class="portrait-face portrait-right"></div>
+        <div class="portrait-face portrait-left"></div>
+      </div>
+      <div class="papers">
+        <div class="paper paper-1"></div>
+        <div class="paper paper-2"></div>
+        <div class="paper paper-3"></div>
+        <div class="paper paper-4"></div>
+        <div class="paper paper-5"></div>
+        <div class="paper paper-6">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const workspace = document.querySelector('.workspace');
+    const scene = document.querySelector('.scene');
+
+    workspace.onmousemove = function changePerspectiveOrigin(event) {
+      const Xmouse = event.pageX;
+      const Ymouse = event.pageY;
+
+      // Calc perspective
+      const Xpers = Xmouse / window.innerWidth;
+      const Ypers = Ymouse / window.innerHeight;
+      const Xpos = Xpers * 100;
+      const Ypos = (Ypers * 100) / 4;
+
+      // Change perspective-origin
+      scene.style.perspectiveOrigin = `${Xpos}% ${Ypos}%`; 
+    }
+
+    workspace.onmouseout = function backToDefault() {
+      scene.style.perspectiveOrigin = '50% 11%';
+    }
+  </script>
+</body>
+</html>

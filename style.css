@@ -1,0 +1,575 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* =================================================== Workspace ====================================================== */
+.workspace {
+  font-size: .5rem;
+  overflow: hidden;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  border: 5px solid #203436;
+}
+.scene {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  width: 100%;
+  height: 30em;
+  -webkit-perspective: 600px;
+  perspective: 600px;
+  -webkit-perspective-origin: 50% 10%;
+  perspective-origin: 50% 10%;
+  -webkit-transition: -webkit-perspective-origin .1s;
+  transition: -webkit-perspective-origin .1s;
+  transition: perspective-origin .1s;
+  transition: perspective-origin .1s, -webkit-perspective-origin .1s;
+}
+/* ==================================================== Desk ======================================================= */
+.desk {
+  width: 40em;
+  height: 20em;
+  -webkit-transform: rotateX(90deg) translateY(0);
+  transform: rotateX(90deg) translateY(0);
+}
+.face {
+  background-color: #ac8968;
+}
+.front, .back {
+  width: 100%;
+  height: 100%;
+}
+.top, .bottom {
+  width: 100%;
+  height: 2em;
+}
+.right, .left {
+  width: 2em;
+  height: 100%;
+}
+/* --- Faces --- */
+.front {
+  -webkit-transform: translateZ(1em);
+  transform: translateZ(1em);
+}
+.back {
+  -webkit-transform: rotateY(180deg) translateZ(1em);
+  transform: rotateY(180deg) translateZ(1em);
+}
+.top {
+  -webkit-transform: rotateX(90deg) translateZ(1em);
+  transform: rotateX(90deg) translateZ(1em);
+}
+.bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(19em);
+  transform: rotateX(-90deg) translateZ(19em);
+}
+.right {
+  -webkit-transform: rotateY(90deg) translateZ(39em);
+  transform: rotateY(90deg) translateZ(39em);
+}
+.left {
+  -webkit-transform: rotateY(-90deg) translateZ(1em);
+  transform: rotateY(-90deg) translateZ(1em);
+}
+/* ==================================================== Laptop ======================================================= */
+.laptop {
+  width: 16em;
+  height: 9.6em;
+  -webkit-transform: translate3d(0em, -12em, -4em);
+  transform: translate3d(0em, -12em, -4em);
+ /* -6 */
+}
+/* ------------------------------------------ Keyboard - Screen --------------------------------------------- */
+.keyboard, .screen {
+  width: 100%;
+  height: 100%;
+}
+.keyboard {
+  -webkit-transform: rotateX(90deg) translate3d(0, 5.2em, -5.2em);
+  transform: rotateX(90deg) translate3d(0, 5.2em, -5.2em);
+}
+.screen {
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transform: rotateX(0) translate3d(0, 0, 0);
+  transform: rotateX(0) translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform .4s;
+  transition: -webkit-transform .4s;
+  transition: transform .4s;
+  transition: transform .4s, -webkit-transform .4s;
+}
+.screen:hover {
+  -webkit-transform: rotateX(8deg) translate3d(0, 0, 0);
+  transform: rotateX(8deg) translate3d(0, 0, 0);
+}
+.keyboard-face, .screen-face {
+  background-color: #141210;
+}
+/* --- Faces --- */
+.keyboard-front, .keyboard-back, .screen-front, .screen-back {
+  width: 100%;
+  height: 100%;
+}
+.keyboard-top, .keyboard-bottom, .screen-top, .screen-bottom {
+  width: 100%;
+  height: 0.8em;
+}
+.keyboard-right, .keyboard-left, .screen-left, .screen-right {
+  width: 0.8em;
+  height: 100%;
+}
+/* --- Faces Positioning --- */
+.keyboard-front, .screen-front {
+  -webkit-transform: translateZ(0.4em);
+  transform: translateZ(0.4em);
+}
+.keyboard-back, .screen-back {
+  -webkit-transform: rotateY(180deg) translateZ(0.4em);
+  transform: rotateY(180deg) translateZ(0.4em);
+}
+.keyboard-top, .screen-top {
+  -webkit-transform: rotateX(90deg) translateZ(0.4em);
+  transform: rotateX(90deg) translateZ(0.4em);
+}
+.keyboard-bottom, .screen-bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(9.2em);
+  transform: rotateX(-90deg) translateZ(9.2em);
+}
+.keyboard-right, .screen-right {
+  -webkit-transform: rotateY(90deg) translateZ(15.6em);
+  transform: rotateY(90deg) translateZ(15.6em);
+}
+.keyboard-left, .screen-left {
+  -webkit-transform: rotateY(-90deg) translateZ(0.4em);
+  transform: rotateY(-90deg) translateZ(0.4em);
+}
+/* --- Power Button --- */
+.power-button {
+  width: 1.05em;
+  height: 1.05em;
+  margin: .9em 1.5em;
+  background-color: #888;
+}
+/* --- Buttons Grid --- */
+.buttons-grid {
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.row {
+  -ms-flex-preferred-size: 1.05em;
+  flex-basis: 1.05em;
+  width: 12.6em;
+}
+.button {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.space {
+  -webkit-box-flex: 6;
+  -ms-flex-positive: 6;
+  flex-grow: 6;
+}
+.enter {
+  -webkit-box-flex: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+}
+.power-button, .button {
+  background-color: #888;
+}
+.power-button:hover, .button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.power-button:active, .button:active {
+  background-color: white;
+}
+/* --- Viewport --- */
+.viewport {
+  margin: auto;
+  width: 14em;
+  height: 7.6em;
+  background: #eee url(images/tag.svg) no-repeat 50% 50%;
+  background-size: 5em 5em;
+  -webkit-box-shadow: inset 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 20px 3px rgba(0, 0, 0, 0.5);
+}
+/* ==================================================== Nail ======================================================= */
+.nail {
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background-color: #3b2212;
+  -webkit-transform: translate3d(12.1em, -26.5em, -18em);
+  transform: translate3d(12.1em, -26.5em, -18em);
+}
+/* ==================================================== Portrait ======================================================= */
+.portrait {
+  width: 14em;
+  height: 10em;
+  -webkit-transform-origin: 50% -1.75em;
+  transform-origin: 50% -1.75em;
+  -webkit-transform: translate3d(12em, -15em, -18em);
+  transform: translate3d(12em, -15em, -18em);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+.portrait:hover {
+  -webkit-transform: translate3d(12em, -15em, -18em) rotate(6deg);
+  transform: translate3d(12em, -15em, -18em) rotate(6deg);
+}
+.portrait-face {
+  background-color: #222224;
+}
+/* --- Faces --- */
+.portrait-front, .portrait-back {
+  width: 100%;
+  height: 100%;
+}
+.portrait-top, .portrait-bottom {
+  width: 100%;
+  height: 1em;
+}
+.portrait-right, .portrait-left {
+  width: 1em;
+  height: 100%;
+}
+/* --- Faces Positioning --- */
+.portrait-front {
+  -webkit-transform: translateZ(0.5em);
+  transform: translateZ(0.5em);
+}
+.portrait-back {
+  -webkit-transform: rotateY(180deg) translateZ(0.5em);
+  transform: rotateY(180deg) translateZ(0.5em);
+}
+.portrait-top {
+  -webkit-transform: rotateX(90deg) translateZ(0.5em);
+  transform: rotateX(90deg) translateZ(0.5em);
+}
+.portrait-bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(9.5em);
+  transform: rotateX(-90deg) translateZ(9.5em);
+}
+.portrait-right {
+  -webkit-transform: rotateY(90deg) translateZ(13.5em);
+  transform: rotateY(90deg) translateZ(13.5em);
+}
+.portrait-left {
+  -webkit-transform: rotateY(-90deg) translateZ(0.5em);
+  transform: rotateY(-90deg) translateZ(0.5em);
+}
+/* --- Picture --- */
+.photo {
+  width: 12em;
+  height: 8em;
+  -o-object-fit: contain;
+  object-fit: contain;
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 0 20px 0.5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 20px 0.5px rgba(0, 0, 0, 0.5);
+  margin: auto;
+}
+/* --- Threads --- */
+.thread {
+  width: .15em;
+  height: 2.5em;
+  background-color: #3b2212;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+.thread:nth-child(1) {
+  -webkit-transform: translate3d(7em, -1.75em, 0) rotate(45deg);
+  transform: translate3d(7em, -1.75em, 0) rotate(45deg);
+}
+.thread:nth-child(2) {
+  -webkit-transform: translate3d(7em, -1.75em, 0) rotate(-45deg);
+  transform: translate3d(7em, -1.75em, 0) rotate(-45deg);
+}
+/* ==================================================== Papers ======================================================= */
+.papers {
+  width: 7em;
+  height: 10em;
+  -webkit-transform: rotateX(90deg) translate3d(10em, 2em, 6em);
+  transform: rotateX(90deg) translate3d(10em, 2em, 6em);
+}
+.paper {
+  width: 100%;
+  height: 100%;
+  padding: .7em;
+  background-color: #fff;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+.paper-1 {
+  -webkit-transform: translateZ(-0.06em);
+  transform: translateZ(-0.06em);
+}
+.paper-2 {
+  -webkit-transform: translateZ(-0.04em);
+  transform: translateZ(-0.04em);
+}
+.paper-3 {
+  -webkit-transform: translateZ(-0.02em);
+  transform: translateZ(-0.02em);
+}
+.papers:hover .paper-3 {
+  -webkit-transform: rotateZ(3deg) translateZ(-0.02em);
+  transform: rotateZ(3deg) translateZ(-0.02em);
+}
+.paper-5 {
+  -webkit-transform: translateZ(0.02em);
+  transform: translateZ(0.02em);
+}
+.papers:hover .paper-5 {
+  -webkit-transform: rotateZ(6deg) translateZ(0.02em);
+  transform: rotateZ(6deg) translateZ(0.02em);
+}
+.paper-6 {
+  -webkit-transform: rotateZ(0) translateZ(0.04em);
+  transform: rotateZ(0) translateZ(0.04em);
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+.papers:hover .paper-6 {
+  -webkit-transform: rotateZ(9deg) translateZ(0.04em);
+  transform: rotateZ(9deg) translateZ(0.04em);
+}
+.line {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  border-bottom: .01em solid #ddd;
+}
+/* ==================================================== Shadows & Highlights ======================================================= */
+.workspace::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: #8bb0b5 radial-gradient(circle at 30% 30%, #fff, transparent);
+}
+/* --- Desk Highlights --- */
+.front {
+  background-image: radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.5), transparent);
+}
+.bottom {
+  background-image: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.5), transparent);
+}
+/* --- Laptop Highlights & Shadows --- */
+.keyboard-front {
+  background-image: radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.2), transparent);
+}
+.screen-front {
+  background-image: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.3), transparent);
+}
+.keyboard-back {
+  -webkit-box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.4), 0px -70px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.4), 0px -70px 20px rgba(0, 0, 0, 0.4);
+}
+/* -- Portrait Shadow --- */
+.portrait {
+  -webkit-box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
+}
+/* --- Papers Shadow --- */
+.paper {
+  -webkit-box-shadow: 3px 0px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 3px 0px 2px rgba(0, 0, 0, 0.05);
+}
+/* ==================================================== DRY ======================================================= */
+/* --- Laptop Border --- */
+.keyboard-face, .screen-face, .power-button, .button, .viewport {
+  border: 0.05px solid #141210;
+}
+/* --- Desk Border --- */
+.face {
+  border: 0.05px solid #624e3c;
+}
+/* --- Portrait Border --- */
+.portrait-front, .photo {
+  border: 4px solid #222224;
+}
+/* --- 3D Space --- */
+.scene, .desk, .laptop, .screen, .keyboard, .portrait, .papers {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+/* --- Absolute Positioned Elements --- */
+.face, .laptop, .screen, .keyboard, .screen-face, .keyboard-face, .portrait, .portrait-face, .thread, .nail, .papers, .paper {
+  position: absolute;
+}
+/* --- Relative Positioned Elements --- */
+.scene, .workspace, .desk, .container {
+  position: relative;
+}
+/* --- Flex Containers --- */
+.workspace, .scene, .screen-front, .keyboard-front, .buttons-grid, .row, .portrait-front, .paper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.keyboard-front, .buttons-grid, .paper {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+/* --- Hidden Elements --- */
+.papers, .portrait, .nail {
+  display: none;
+}
+/* ==================================================== Key Frames ======================================================= */
+@-webkit-keyframes desk {
+  0% {
+      -webkit-transform: rotateX(90deg) translateY(32em);
+      transform: rotateX(90deg) translateY(32em);
+ }
+}
+@keyframes desk {
+  0% {
+      -webkit-transform: rotateX(90deg) translateY(32em);
+      transform: rotateX(90deg) translateY(32em);
+ }
+}
+@-webkit-keyframes laptop {
+  0% {
+      -webkit-transform: translate3d(-6em, -12em, 24rem);
+      transform: translate3d(-6em, -12em, 24rem);
+ }
+}
+@keyframes laptop {
+  0% {
+      -webkit-transform: translate3d(-6em, -12em, 24rem);
+      transform: translate3d(-6em, -12em, 24rem);
+ }
+}
+@-webkit-keyframes open {
+  0% {
+      -webkit-transform: rotateX(-90deg) translate3d(0, -0.4em, -0.4em);
+      transform: rotateX(-90deg) translate3d(0, -0.4em, -0.4em);
+ }
+}
+@keyframes open {
+  0% {
+      -webkit-transform: rotateX(-90deg) translate3d(0, -0.4em, -0.4em);
+      transform: rotateX(-90deg) translate3d(0, -0.4em, -0.4em);
+ }
+}
+@-webkit-keyframes screen {
+  0% {
+      background: #333;
+ }
+}
+@keyframes screen {
+  0% {
+      background: #333;
+ }
+}
+@-webkit-keyframes papers {
+  0% {
+      -webkit-transform: rotateX(90deg) translate3d(10em, 26rem, 6em);
+      transform: rotateX(90deg) translate3d(10em, 26rem, 6em);
+ }
+}
+@keyframes papers {
+  0% {
+      -webkit-transform: rotateX(90deg) translate3d(10em, 26rem, 6em);
+      transform: rotateX(90deg) translate3d(10em, 26rem, 6em);
+ }
+}
+@-webkit-keyframes fall {
+  0% {
+      -webkit-transform: translate3d(12em, -35em, -18em);
+      transform: translate3d(12em, -35em, -18em);
+ }
+}
+@keyframes fall {
+  0% {
+      -webkit-transform: translate3d(12em, -35em, -18em);
+      transform: translate3d(12em, -35em, -18em);
+ }
+}
+/* ==================================================== Animations ======================================================= */
+.desk {
+  -webkit-animation: desk 0.6s cubic-bezier(0.48, 1.46, 0.68, 1) backwards;
+  animation: desk 0.6s cubic-bezier(0.48, 1.46, 0.68, 1) backwards;
+}
+.laptop {
+  -webkit-animation: laptop 0.6s cubic-bezier(0.48, 1.46, 0.68, 1) 0.6s backwards;
+  animation: laptop 0.6s cubic-bezier(0.48, 1.46, 0.68, 1) 0.6s backwards;
+}
+.screen {
+  -webkit-animation: open .8s backwards 1.2s;
+  animation: open .8s backwards 1.2s;
+}
+.viewport {
+  -webkit-animation: screen 0s backwards 2s;
+  animation: screen 0s backwards 2s;
+}
+.papers {
+  -webkit-animation: papers 1s backwards 1.8s;
+  animation: papers 1s backwards 1.8s;
+}
+.portrait {
+  -webkit-animation: fall .5s backwards 2.7s;
+  animation: fall .5s backwards 2.7s;
+}
+/* ==================================================== Media Queries ======================================================= */
+@media (min-width: 270px) {
+  .workspace {
+      font-size: .7rem;
+ }
+}
+@media (min-width: 545px) {
+  .laptop {
+      -webkit-transform: translate3d(-6em, -12em, -4em);
+      transform: translate3d(-6em, -12em, -4em);
+ }
+  .papers, .portrait, .nail {
+      display: block;
+ }
+}
+@media (min-width: 791px) {
+  .workspace {
+      font-size: .8rem;
+ }
+}
+@media (min-width: 900px) {
+  .workspace {
+      font-size: .9rem;
+ }
+}
+@media (min-width: 1000px) {
+  .workspace {
+      font-size: 1rem;
+ }
+}
+@media (min-height: 528px) {
+  .workspace {
+    min-height: 33rem;
+  }
+}
